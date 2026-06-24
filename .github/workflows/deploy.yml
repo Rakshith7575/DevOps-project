@@ -25,9 +25,9 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
 
           script: |
-            cd /home/ubuntu/visitor-app
+            cd /home/ubuntu/visitorapp
 
-            git pull origin main
+            git pull origin master
 
             docker compose down
 

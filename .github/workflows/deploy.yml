@@ -1,0 +1,36 @@
+name: Deploy App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy To EC2
+        uses: appleboy/ssh-action@v1.0.3
+
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_KEY }}
+
+          script: |
+            cd /home/ubuntu/visitor-app
+
+            git pull origin main
+
+            docker compose down
+
+            docker compose build
+
+            docker compose up -d

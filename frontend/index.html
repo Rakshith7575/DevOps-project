@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Visitor Counter</title>
+</head>
+<body>
+
+<h1>DevOps Project</h1>
+
+<h2 id="count">Loading...</h2>
+
+<script>
+fetch("http://35.154.134.213:5000/count")
+.then(res => res.json())
+.then(data => {
+ document.getElementById("count").innerHTML =
+ "Visitors : " + data.count;
+});
+</script>
+
+</body>
+</html>

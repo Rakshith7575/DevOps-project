@@ -25,6 +25,12 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
 
           script: |
+            whoami
+
+            pwd
+
+            groups
+
             cd /home/ubuntu/visitorapp
 
             git pull origin master
